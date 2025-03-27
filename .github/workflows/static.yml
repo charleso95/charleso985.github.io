@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一街吃遍全中国 | 重庆观音桥好吃街</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #d62926;
+            --secondary: #f8b195;
+            --accent: #355c7d;
+            --light: #f9f1e6;
+            --dark: #2a2a2a;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--light);
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://th.bing.com/th/id/R.45f702f7d3e1de218abd481003e2ad43?rik=3N1hWic%2ftjNewg&riu=http%3a%2f%2fimgbdb3.bendibao.com%2fcqbdb%2ftour%2f20224%2f26%2f2022426133543_12776.jpg&ehk=wj8L51LqHPAgR7KgBYszA5t5GIf2UGFpbhTHfzoZKSI%3d&risl=&pid=ImgRaw&r=0') center/cover no-repeat;
+            height: 100vh;
+            min-height: 600px;
+        }
+        
+        .chinese-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            margin: 1.5rem auto;
+        }
+        
+        .food-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--light);
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: var(--primary);
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 70vh;
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-red-600 chinese-title">观音桥好吃街</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#structure" class="nav-link text-gray-800 hover:text-red-600">项目构成</a>
+                    <a href="#history" class="nav-link text-gray-800 hover:text-red-600">历史蜕变</a>
+                    <a href="#food" class="nav-link text-gray-800 hover:text-red-600">特色美食</a>
+                    <a href="#honor" class="nav-link text-gray-800 hover:text-red-600">荣誉认证</a>
+                    <a href="#operation" class="nav-link text-gray-800 hover:text-red-600">运营理念</a>
+                    <a href="#transport" class="nav-link text-gray-800 hover:text-red-600">交通指南</a>
+                </div>
+                
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl text-gray-800"></i>
+                </button>
+            </div>
+            
+            <!-- 移动端菜单 -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#structure" class="text-gray-800 hover:text-red-600 py-2">项目构成</a>
+                    <a href="#history" class="text-gray-800 hover:text-red-600 py-2">历史蜕变</a>
+                    <a href="#food" class="text-gray-800 hover:text-red-600 py-2">特色美食</a>
+                    <a href="#honor" class="text-gray-800 hover:text-red-600 py-2">荣誉认证</a>
+                    <a href="#operation" class="text-gray-800 hover:text-red-600 py-2">运营理念</a>
+                    <a href="#transport" class="text-gray-800 hover:text-red-600 py-2">交通指南</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero-section flex items-center justify-center text-center text-white pt-16">
+        <div class="container px-6">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 chinese-title">一街吃遍全中国</h1>
+            <p class="text-xl md:text-2xl mb-8">16000㎡美食天堂 · 236+特色餐饮 · 日均11万食客</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#food" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition duration-300">探索美食</a>
+                <a href="#transport" class="border-2 border-white hover:bg-white hover:text-red-600 text-white px-8 py-3 rounded-full font-bold transition duration-300">交通指南</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目构成 -->
+    <section id="structure" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">项目构成</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">观音桥好吃街分为A、B两区，总面积16000平方米，汇集236家餐饮单位，其中特色小吃占比88%，是重庆最具代表性的美食地标。</p>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <img src="https://th.bing.com/th/id/R.f5f02c6f58cd3a7be787a320fd9d328e?rik=TnITRHknemL8xg&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20190808%2fab31e932d97a45eda90387152edc819a.jpeg&ehk=dyIhVJ%2fXxaMh%2bhoX%2fD%2b8U43DlVBM%2fFDlw%2fgc9Cz7k%2bE%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="观音桥好吃街平面图" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-red-600">A区</h3>
+                            <p class="text-gray-600">2015年开业</p>
+                            <p class="text-gray-600">8000平方米</p>
+                            <p class="text-gray-600">传统小吃聚集地</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-red-600">B区</h3>
+                            <p class="text-gray-600">2021年开业</p>
+                            <p class="text-gray-600">8000平方米</p>
+                            <p class="text-gray-600">网红美食新地标</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg col-span-2">
+                            <h3 class="text-xl font-bold mb-2 text-red-600">商户生态</h3>
+                            <div class="flex items-center">
+                                <div class="w-1/3 text-4xl font-bold text-red-600">88%</div>
+                                <div class="w-2/3 pl-4">特色小吃占比，207家地方特色美食</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-red-600 text-white p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold mb-2">16000</div>
+                    <p>平方米总面积</p>
+                </div>
+                <div class="bg-amber-500 text-white p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold mb-2">236</div>
+                    <p>家餐饮单位</p>
+                </div>
+                <div class="bg-red-600 text-white p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold mb-2">110000</div>
+                    <p>日均人流量</p>
+                </div>
+                <div class="bg-amber-500 text-white p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold mb-2">1000+</div>
+                    <p>种特色小吃</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 历史蜕变 -->
+    <section id="history" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">历史蜕变</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">从无人问津的建材市场到重庆美食地标，观音桥好吃街完成了华丽的蜕变。</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold mb-2">2011年前：建材市场时期</h3>
+                    <p class="text-gray-600 mb-4">原为销售五金配件、家具家电的低端建材市场，因管理混乱几乎成为烂尾楼。</p>
+                    <img src="https://th.bing.com/th/id/OIP.hLBO86qcKYbEf54OJ05IyAHaG2?rs=1&pid=ImgDetMain" alt="旧建材市场" class="rounded-lg shadow-md mb-4 w-full">
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold mb-2">2015年：A区开业</h3>
+                    <p class="text-gray-600 mb-4">重庆新天街投资管理有限公司接手改造，首期8000平方米美食广场开业，迅速成为城市新名片。</p>
+                    <img src="https://th.bing.com/th/id/OIP.WV5QNAdP3SycgfGJaG8N3gHaEK?rs=1&pid=ImgDetMain" alt="2015年开业" class="rounded-lg shadow-md mb-4 w-full">
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold mb-2">2019年：品牌孵化</h3>
+                    <p class="text-gray-600 mb-4">开始发展小吃孵化及加盟，"刘酥肉"等品牌4年内发展加盟商1000余家。</p>
+                    <img src="https://example.com/brand-incubation.jpg" alt="品牌孵化" class="rounded-lg shadow-md mb-4 w-full">
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold mb-2">2021年：B区扩建</h3>
+                    <p class="text-gray-600 mb-4">新增8000平方米网红餐饮区，引入更多创新美食，日均客流增长40%。</p>
+                    <img src="https://example.com/expansion-2021.jpg" alt="2021年扩建" class="rounded-lg shadow-md mb-4 w-full">
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-bold mb-2">2023年：全国标杆</h3>
+                    <p class="text-gray-600 mb-4">获评"重庆高品质消费新场景"等多项荣誉，成为全国美食街区运营典范。</p>
+                    <img src="https://example.com/current-view.jpg" alt="现今面貌" class="rounded-lg shadow-md w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色美食 -->
+    <section id="food" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">特色美食</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">汇集全国1000余种特色小吃，让重庆人民吃到全国小吃，让全国人民吃到重庆小吃。</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="food-card bg-white rounded-lg overflow-hidden">
+                    <img src="https://example.com/liu-sourou.jpg" alt="刘酥肉" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">刘酥肉</h3>
+                        <p class="text-gray-600 mb-4">重庆传统小吃，单店日销2000份，全国加盟超500家。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">¥15/份</span>
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">明星单品</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden">
+                    <img src="https://example.com/yangyu.jpg" alt="丁家坡洋芋" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">丁家坡洋芋</h3>
+                        <p class="text-gray-600 mb-4">重庆特色小吃，麻辣鲜香，年销售额超千万。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">¥10/份</span>
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">必吃推荐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden">
+                    <img src="https://example.com/lianggao.jpg" alt="葡萄井凉糕" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">葡萄井凉糕</h3>
+                        <p class="text-gray-600 mb-4">四川传统甜品，清凉解暑，夏季日销3000份。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">¥8/份</span>
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">消暑佳品</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-red-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">重庆本土美食</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-pepper-hot text-red-600 mr-3"></i>
+                            <span>重庆小面 - 麻辣鲜香，日均销售5000碗</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-drumstick-bite text-red-600 mr-3"></i>
+                            <span>山城烧烤 - 炭火烤制，夜宵首选</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-utensils text-red-600 mr-3"></i>
+                            <span>江湖菜 - 麻辣鲜香，重庆特色</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-amber-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-amber-600">全国特色小吃</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-bread-slice text-amber-600 mr-3"></i>
+                            <span>西安肉夹馍 - 陕西传统，外酥里嫩</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumpling text-amber-600 mr-3"></i>
+                            <span>上海生煎包 - 皮薄馅大，汤汁鲜美</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-rice text-amber-600 mr-3"></i>
+                            <span>广东肠粉 - 滑嫩爽口，广式早茶</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 荣誉认证 -->
+    <section id="honor" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">荣誉认证</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">观音桥好吃街凭借卓越的运营管理和美食品质，获得了多项荣誉认证。</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl text-red-600 mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2022年度江北区诚信之心</h3>
+                    <p class="text-gray-600">表彰在商业诚信建设方面的突出贡献</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl text-red-600 mb-4">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2023抖音优秀合作伙伴</h3>
+                    <p class="text-gray-600">抖音生活服务餐饮业务中心颁发</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl text-red-600 mb-4">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">重庆高品质消费新场景</h3>
+                    <p class="text-gray-600">巴渝美食类唯一获奖项目</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold mb-4 text-center">消费者评价</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div class="text-amber-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold">4.9/5.0</span>
+                        </div>
+                        <p class="text-gray-600">大众点评10万+条评价</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div class="text-red-600 text-2xl font-bold">98%</div>
+                            <div class="ml-2">推荐率</div>
+                        </div>
+                        <p class="text-gray-600">游客满意度调查结果</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 运营理念 -->
+    <section id="operation" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">运营理念</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">"做小吃没得巧，六分靠真材实料，三分工序火候到，只有一分窍"</p>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <img src="https://example.com/operation.jpg" alt="运营管理" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">品质管控</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-red-600 mt-1 mr-3"></i>
+                            <span>大宗原材料集中采购，确保品质稳定</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-red-600 mt-1 mr-3"></i>
+                            <span>新入驻商家产品严格把关，不达标不开业</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-red-600 mt-1 mr-3"></i>
+                            <span>每月食品安全培训，增强从业人员安全意识</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-red-600 mt-1 mr-3"></i>
+                            <span>2024年全面硬件改造升级，提升卫生标准</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-red-600">人才战略</h3>
+                    <div class="flex items-center mb-4">
+                        <div class="text-4xl font-bold text-red-600 mr-4">70%</div>
+                        <div>985/211毕业生占比</div>
+                    </div>
+                    <p class="text-gray-600">自2021年起重点引进高素质人才，作为后备管理培养</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-red-600">品牌输出</h3>
+                    <div class="flex items-center mb-4">
+                        <div class="text-4xl font-bold text-red-600 mr-4">1000+</div>
+                        <div>全国加盟商</div>
+                    </div>
+                    <p class="text-gray-600">以"刘酥肉"等品牌为代表，4年发展全国加盟网络</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-red-600">未来规划</h3>
+                    <div class="flex items-center mb-4">
+                        <div class="text-4xl font-bold text-red-600 mr-4">10+</div>
+                        <div>目标城市</div>
+                    </div>
+                    <p class="text-gray-600">立足江北走向全国，发展项目管理咨询输出</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交通指南 -->
+    <section id="transport" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 chinese-title">交通指南</h2>
+            <div class="section-divider"></div>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">观音桥好吃街位于重庆市江北区观音桥核心商圈，交通便利，四通八达。</p>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-red-600 mr-3"></i>
+                            <span>地址</span>
+                        </h3>
+                        <p class="text-gray-600">重庆市江北区观音桥东环路59号附6号3-54~61号</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-subway text-red-600 mr-3"></i>
+                            <span>轨道交通</span>
+                        </h3>
+                        <p class="text-gray-600 mb-2">乘坐3号线或9号线至观音桥站下车，步行5分钟可达</p>
+                        <div class="flex space-x-2">
+                            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-sm">3号线</span>
+                            <span class="bg-purple-500 text-white px-2 py-1 rounded-full text-sm">9号线</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-bus text-red-600 mr-3"></i>
+                            <span>公交线路</span>
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-bold mb-2">建新北路站</h4>
+                                <p class="text-sm text-gray-600">69路、125路、127路、181路等15条线路</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">观音桥东环路站</h4>
+                                <p class="text-sm text-gray-600">68路、107路、113路、118路等20条线路</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-car text-red-600 mr-3"></i>
+                            <span>停车信息</span>
+                        </h3>
+                        <p class="text-gray-600">周边2000个智能停车位，消费满100元可享2小时免费停车</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <iframe src="https://example.com/map-embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-red-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 chinese-title">观音桥好吃街</h3>
+                    <p class="text-red-200">一街吃遍全中国，重庆美食新名片</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">运营时间</h3>
+                    <p class="text-red-200">10:00-22:00（全年无休）</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系方式</h3>
+                    <p class="text-red-200 mb-2">
+                        <i class="fas fa-phone-alt mr-2"></i>023-12345678
+                    </p>
+                    <p class="text-red-200">
+                        <i class="fas fa-envelope mr-2"></i>info@guanyinqiao.com
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关注我们</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-white hover:text-red-300">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-2xl text-white hover:text-red-300">
+                            <i class="fab fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-2xl text-white hover:text-red-300">
+                            <i class="fab fa-douyin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-red-700 pt-8 text-center text-red-200">
+                <p>© 2023 观音桥好吃街 版权所有 | 由重庆新天街投资管理有限公司运营</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+        
+        // 图片懒加载
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+            
+            if ('IntersectionObserver' in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove('lazy');
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
